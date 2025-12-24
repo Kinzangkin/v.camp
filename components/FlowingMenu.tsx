@@ -4,9 +4,8 @@ import React from 'react';
 import { gsap } from 'gsap';
 
 interface MenuItemProps {
-  link: string;
   text: string;
-  image: string;
+  description?: string;
 }
 
 interface FlowingMenuProps {
@@ -25,7 +24,7 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
   );
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ text, description }) => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
@@ -38,7 +37,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     return topEdgeDist < bottomEdgeDist ? 'top' : 'bottom';
   };
 
-  const handleMouseEnter = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseEnter = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(ev.clientX - rect.left, ev.clientY - rect.top, rect.width, rect.height);
@@ -49,39 +48,42 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       .to([marqueeRef.current, marqueeInnerRef.current], { y: '0%' });
   };
 
-  const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseLeave = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(ev.clientX - rect.left, ev.clientY - rect.top, rect.width, rect.height);
 
-    const tl = gsap.timeline({ defaults: animationDefaults }) as TimelineMax;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tl = gsap.timeline({ defaults: animationDefaults }) as any;
     tl.to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }).to(marqueeInnerRef.current, {
       y: edge === 'top' ? '101%' : '-101%'
     });
   };
 
   const repeatedMarqueeContent = React.useMemo(() => {
+    const displayText = description || text;
     return Array.from({ length: 4 }).map((_, idx) => (
       <React.Fragment key={idx}>
-        <span className="text-[#060010] uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0]">{text}</span>
-        <div
-          className="w-[200px] h-[7vh] my-[2em] mx-[2vw] p-[1em_0] rounded-[50px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${image})` }}
-        />
+        <span className="text-[#5865F2] uppercase font-medium text-[3vh] md:text-[4vh] leading-[1.2] px-8 whitespace-nowrap">
+          {displayText}
+        </span>
+        <span className="text-[#5865F2]/50 mx-4">•</span>
       </React.Fragment>
     ));
-  }, [text, image]);
+  }, [text, description]);
 
   return (
-    <div className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_#fff]" ref={itemRef}>
-      <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] hover:text-[#060010] focus:text-white focus-visible:text-[#060010]"
-        href={link}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+    <div
+      className="flex-1 relative overflow-hidden text-center border-t border-white/10"
+      ref={itemRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[3vh] md:text-[4vh] hover:text-[#5865F2] transition-colors"
       >
         {text}
-      </a>
+      </div>
       <div
         className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-white translate-y-[101%]"
         ref={marqueeRef}
@@ -97,26 +99,3 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
 };
 
 export default FlowingMenu;
-
-// Note: this is also needed
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-//   theme: {
-//     extend: {
-//       translate: {
-//         '101': '101%',
-//       },
-//       keyframes: {
-//         marquee: {
-//           'from': { transform: 'translateX(0%)' },
-//           'to': { transform: 'translateX(-50%)' }
-//         }
-//       },
-//       animation: {
-//         marquee: 'marquee 15s linear infinite'
-//       }
-//     }
-//   },
-//   plugins: [],
-// };

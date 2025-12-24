@@ -18,24 +18,20 @@ const stats = [
 // FlowingMenu items for Core Values
 const flowingMenuItems = [
     {
-        link: "#",
-        text: "Kolaborasi Global — Menghubungkan editor dari berbagai negara",
-        image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop",
+        text: "Kolaborasi Global",
+        description: "Menghubungkan editor dari berbagai negara, melampaui batas zona waktu dan bahasa",
     },
     {
-        link: "#",
-        text: "Kreativitas Tanpa Batas — Mengeksplorasi teknik baru",
-        image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop",
+        text: "Kreativitas Tanpa Batas",
+        description: "Terus mendorong batas kreativitas, mengeksplorasi teknik baru",
     },
     {
-        link: "#",
-        text: "Komunitas Supportif — Saling mendukung dan berbagi ilmu",
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop",
+        text: "Komunitas Supportif",
+        description: "Saling mendukung, berbagi ilmu, dan tumbuh bersama",
     },
     {
-        link: "#",
-        text: "Semangat Tim — Bekerja sama dengan dedikasi tinggi",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop",
+        text: "Semangat Tim",
+        description: "Bekerja sama dengan semangat dan dedikasi tinggi",
     },
 ];
 
