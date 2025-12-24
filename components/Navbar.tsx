@@ -108,18 +108,23 @@ const Navbar = () => {
 
                     <Link
                         href="/"
-                        className="font-bold text-xl sm:text-2xl tracking-tighter pointer-events-auto z-70 relative"
+                        className="font-bold text-xl sm:text-2xl tracking-tighter pointer-events-auto z-70 relative overflow-hidden"
                     >
-                        <motion.span
-                            key={isOpen ? 'open' : 'closed'}
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.9 }}
-                            className={`relative ${isOpen ? 'text-white' : 'mix-blend-difference'}`}
-                        >
-                            V.camp
-                        </motion.span>
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={isOpen ? 'open' : 'closed'}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: [0.76, 0, 0.24, 1]
+                                }}
+                                className={`block ${isOpen ? 'text-white' : 'mix-blend-difference'}`}
+                            >
+                                V.camp
+                            </motion.span>
+                        </AnimatePresence>
                     </Link>
 
                     {/* Desktop buttons */}
