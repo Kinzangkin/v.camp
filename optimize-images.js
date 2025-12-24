@@ -10,18 +10,25 @@ if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Gallery images to optimize (1-6.png)
-const galleryImages = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+// Gallery images to optimize (supports both png and jpg)
+const galleryImages = [
+    { input: '1.png', output: '1.webp' },
+    { input: '2.jpg', output: '2.webp' },
+    { input: '3.png', output: '3.webp' },
+    { input: '4.jpg', output: '4.webp' },
+    { input: '5.png', output: '5.webp' },
+    { input: '6.png', output: '6.webp' },
+];
 
 async function optimizeImages() {
-    console.log('🖼️  Starting image optimization...\n');
+    console.log('🖼️  Starting image optimization (NO CROPPING)...\n');
 
-    for (const filename of galleryImages) {
-        const inputPath = path.join(inputDir, filename);
-        const outputPath = path.join(outputDir, filename.replace('.png', '.webp'));
+    for (const file of galleryImages) {
+        const inputPath = path.join(inputDir, file.input);
+        const outputPath = path.join(outputDir, file.output);
 
         if (!fs.existsSync(inputPath)) {
-            console.log(`⚠️  Skipping ${filename} - file not found`);
+            console.log(`⚠️  Skipping ${file.input} - file not found`);
             continue;
         }
 
@@ -29,26 +36,30 @@ async function optimizeImages() {
         const inputSizeMB = (inputStats.size / 1024 / 1024).toFixed(2);
 
         try {
+            // Get original image dimensions
+            const metadata = await sharp(inputPath).metadata();
+            console.log(`📐 ${file.input}: ${metadata.width}x${metadata.height}`);
+
             await sharp(inputPath)
-                .resize(800, 600, {
-                    fit: 'cover',
-                    withoutEnlargement: true
+                .resize(1200, 900, {
+                    fit: 'inside',           // TIDAK CROP - muat dalam batas
+                    withoutEnlargement: true // Jangan perbesar jika lebih kecil
                 })
-                .webp({ quality: 80 })
+                .webp({ quality: 85 })       // Kualitas lebih tinggi
                 .toFile(outputPath);
 
             const outputStats = fs.statSync(outputPath);
             const outputSizeKB = (outputStats.size / 1024).toFixed(0);
             const reduction = ((1 - outputStats.size / inputStats.size) * 100).toFixed(1);
 
-            console.log(`✅ ${filename} → ${outputSizeKB} KB (was ${inputSizeMB} MB, -${reduction}%)`);
+            console.log(`✅ ${file.input} → ${file.output}: ${outputSizeKB} KB (was ${inputSizeMB} MB, -${reduction}%)\n`);
         } catch (error) {
-            console.log(`❌ Error processing ${filename}:`, error.message);
+            console.log(`❌ Error processing ${file.input}:`, error.message);
         }
     }
 
-    console.log('\n✨ Done! Optimized images are in public/asset-optimized/');
-    console.log('📝 Remember to update Hero.tsx to use the new paths!');
+    console.log('✨ Done! Images optimized WITHOUT cropping.');
+    console.log('📍 Output: public/asset-optimized/');
 }
 
 optimizeImages();
