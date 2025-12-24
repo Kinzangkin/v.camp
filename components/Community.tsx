@@ -55,7 +55,7 @@ const Community = () => {
                             Belajar, berkarya, dan tumbuh bersama di V.camp Discord Server.
                         </p>
                         <a
-                            href="https://discord.gg/vestiacamp"
+                            href="https://discord.gg/UrXE4Aqtme"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-white text-[#5865F2] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"

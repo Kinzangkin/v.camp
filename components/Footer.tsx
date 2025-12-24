@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Instagram, Youtube, Mail } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import Link from "next/link";
 
 // Discord icon component
@@ -36,9 +36,8 @@ const Footer = () => {
                         <div>
                             <p className="text-gray-500 mb-4 uppercase tracking-widest text-xs font-medium">Komunitas</p>
                             <ul className="space-y-2">
-                                <li><a href="https://discord.gg/vestiacamp" target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] transition-colors flex items-center gap-2"><DiscordIcon className="w-4 h-4" /> Discord</a></li>
-                                <li><a href="https://instagram.com/vestiacamp" target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] transition-colors flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
-                                <li><a href="https://youtube.com/@vestiacamp" target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] transition-colors flex items-center gap-2"><Youtube className="w-4 h-4" /> YouTube</a></li>
+                                <li><a href="https://discord.gg/UrXE4Aqtme" target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] transition-colors flex items-center gap-2"><DiscordIcon className="w-4 h-4" /> Discord</a></li>
+                                <li><a href="https://www.instagram.com/v.camp_" target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] transition-colors flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a></li>
                             </ul>
                         </div>
                         <div>
@@ -56,7 +55,7 @@ const Footer = () => {
                         <h3 className="text-3xl md:text-4xl font-bold mb-2">Siap Berkarya Bersama?</h3>
                         <p className="text-white/80 mb-4">Gabung komunitas editor global sekarang</p>
                         <a
-                            href="https://discord.gg/vestiacamp"
+                            href="https://discord.gg/UrXE4Aqtme"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-white text-[#5865F2] px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
@@ -68,13 +67,6 @@ const Footer = () => {
 
                     {/* Decorative Circle */}
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-white/10 rounded-full blur-2xl" />
-
-                    {/* Flags */}
-                    <div className="hidden md:flex absolute right-20 top-1/2 -translate-y-1/2 text-4xl gap-2 opacity-50">
-                        <span>🇮🇩</span>
-                        <span>🇲🇾</span>
-                        <span>🇵🇭</span>
-                    </div>
                 </div>
 
                 <div className="mt-24 pt-8 border-t border-white/10 w-full flex flex-col md:flex-row justify-between gap-4 text-xs text-gray-500">

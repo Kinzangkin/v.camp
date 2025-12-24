@@ -21,7 +21,7 @@ const steps = [
         icon: <Instagram className="w-6 h-6" />,
         action: {
             text: "Follow Instagram",
-            href: "https://instagram.com/vestiacamp",
+            href: "https://www.instagram.com/v.camp_",
         },
     },
     {
@@ -31,7 +31,7 @@ const steps = [
         icon: <DiscordIcon className="w-6 h-6" />,
         action: {
             text: "Join Discord",
-            href: "https://discord.gg/vestiacamp",
+            href: "https://discord.gg/UrXE4Aqtme",
         },
     },
     {
@@ -54,7 +54,7 @@ export default function JoinPage() {
     return (
         <main className="min-h-screen bg-[#Fdfdfd]">
             {/* Hero */}
-            <section className="py-32 px-10 bg-gradient-to-b from-[#5865F2]/10 to-transparent">
+            <section className="py-32 px-10 bg-linear-to-b from-[#5865F2]/10 to-transparent">
                 <div className="max-w-[1200px] mx-auto text-center">
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1A1A] mb-6">
                         Cara <span className="text-[#5865F2]">Bergabung</span>
@@ -138,7 +138,7 @@ export default function JoinPage() {
             {/* Coming Soon */}
             <section className="py-16 px-10">
                 <div className="max-w-[800px] mx-auto text-center">
-                    <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-3xl p-10">
+                    <div className="bg-linear-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-3xl p-10">
                         <span className="text-amber-600 font-medium text-sm uppercase tracking-wide">Coming Soon</span>
                         <h3 className="text-2xl font-bold text-[#1A1A1A] mt-2 mb-3">Fitur Pendaftaran Online Akan Segera Hadir!</h3>
                         <p className="text-gray-600">
@@ -155,7 +155,7 @@ export default function JoinPage() {
                     <h2 className="text-4xl font-bold mb-6">Siap Bergabung?</h2>
                     <p className="text-gray-400 mb-8">Langkah pertama menuju komunitas editing global</p>
                     <a
-                        href="https://discord.gg/vestiacamp"
+                        href="https://discord.gg/UrXE4Aqtme"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-[#5865F2] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#4752c4] transition-colors inline-flex items-center gap-2"

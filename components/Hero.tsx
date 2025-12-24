@@ -24,28 +24,28 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 // Gallery items for V.camp MEP showcase
 const galleryItems = [
     {
-        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
-        text: "MEP Summer Vibes",
+        image: "asset/1.png",
+        text: "1",
     },
     {
-        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
-        text: "Vestia Tribute",
+        image: "asset/2.png",
+        text: "2",
     },
     {
-        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800&auto=format&fit=crop",
-        text: "Anime Edits Collab",
+        image: "asset/3.png",
+        text: "3",
     },
     {
-        image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=800&auto=format&fit=crop",
-        text: "Global MEP 2024",
+        image: "asset/4.png",
+        text: "4",
     },
     {
-        image: "https://images.unsplash.com/photo-1491002052546-bf38f186af56?q=80&w=800&auto=format&fit=crop",
-        text: "Winter Wonderland",
+        image: "asset/5.png",
+        text: "5",
     },
     {
-        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&auto=format&fit=crop",
-        text: "Cinematic Edits",
+        image: "asset/6.png",
+        text: "6",
     },
 ];
 
@@ -78,7 +78,7 @@ const Hero = () => {
                             Lihat Portfolio
                         </a>
                         <a
-                            href="https://discord.gg/vestiacamp"
+                            href="https://discord.gg/UrXE4Aqtme"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-[#5865F2] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-[#4752c4] transition-colors inline-flex items-center justify-center gap-2"

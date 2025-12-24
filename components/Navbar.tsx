@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Instagram, Youtube } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -90,16 +90,16 @@ const Navbar = () => {
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className={`fixed top-0 left-0 right-0 w-full z-60 transition-all duration-300 ${isScrolled
-                        ? 'bg-white/80 backdrop-blur-lg shadow-lg py-3'
-                        : 'bg-transparent py-4 sm:py-6 md:py-8'
+                    ? 'bg-white/80 backdrop-blur-lg shadow-lg py-3'
+                    : 'bg-transparent py-4 sm:py-6 md:py-8'
                     }`}
             >
                 <div className="max-w-[1584px] mx-auto px-4 sm:px-6 md:px-10 flex justify-between items-center pointer-events-none">
                     <button
                         onClick={toggleMenu}
                         className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-colors cursor-pointer pointer-events-auto ${isScrolled
-                                ? 'bg-[#1A1A1A] text-white hover:bg-black'
-                                : 'bg-[#1A1A1A] text-white hover:bg-black'
+                            ? 'bg-[#1A1A1A] text-white hover:bg-black'
+                            : 'bg-[#1A1A1A] text-white hover:bg-black'
                             }`}
                     >
                         {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -117,19 +117,19 @@ const Navbar = () => {
                     {/* Desktop buttons */}
                     <div className="hidden md:flex items-center gap-4 pointer-events-auto">
                         <a
-                            href="https://instagram.com/vestiacamp"
+                            href="https://www.instagram.com/v.camp_"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`text-sm font-medium transition-opacity px-4 py-2 rounded-full cursor-pointer flex items-center gap-2 ${isScrolled
-                                    ? 'text-gray-700 hover:text-black'
-                                    : 'mix-blend-difference text-black/80 hover:opacity-70'
+                                ? 'text-gray-700 hover:text-black'
+                                : 'mix-blend-difference text-black/80 hover:opacity-70'
                                 }`}
                         >
                             <Instagram className="w-4 h-4" />
                             Instagram
                         </a>
                         <a
-                            href="https://discord.gg/vestiacamp"
+                            href="https://discord.gg/UrXE4Aqtme"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-[#5865F2] text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-[#4752c4] transition-colors cursor-pointer flex items-center gap-2"
@@ -142,7 +142,7 @@ const Navbar = () => {
                     {/* Mobile buttons - icons only */}
                     <div className="flex md:hidden items-center gap-2 pointer-events-auto">
                         <a
-                            href="https://instagram.com/vestiacamp"
+                            href="https://www.instagram.com/v.camp_"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-9 h-9 rounded-full bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white"
@@ -151,7 +151,7 @@ const Navbar = () => {
                             <Instagram className="w-4 h-4" />
                         </a>
                         <a
-                            href="https://discord.gg/vestiacamp"
+                            href="https://discord.gg/UrXE4Aqtme"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-9 h-9 rounded-full bg-[#5865F2] flex items-center justify-center text-white"
@@ -196,7 +196,6 @@ const Navbar = () => {
                                             <li>
                                                 <Link href="/join" onClick={toggleMenu} className="text-2xl sm:text-3xl md:text-4xl font-normal hover:text-gray-300 transition-colors">Cara Bergabung</Link>
                                             </li>
-                                        
                                         </ul>
                                     </motion.div>
                                 </div>
@@ -207,34 +206,25 @@ const Navbar = () => {
                                         <h3 className="text-xs font-medium text-gray-500 mb-4 sm:mb-8 uppercase tracking-widest">Komunitas</h3>
                                         <ul className="space-y-3 sm:space-y-6">
                                             <li>
-                                                <a href="https://discord.gg/vestiacamp" target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-normal hover:text-gray-300 transition-colors flex items-center gap-3">
+                                                <a href="https://discord.gg/UrXE4Aqtme" target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-normal hover:text-gray-300 transition-colors flex items-center gap-3">
                                                     <DiscordIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                                                     Discord Server
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="https://instagram.com/vestiacamp" target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-normal hover:text-gray-300 transition-colors flex items-center gap-3">
+                                                <a href="https://www.instagram.com/v.camp_" target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-normal hover:text-gray-300 transition-colors flex items-center gap-3">
                                                     <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
                                                     Instagram
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://youtube.com/@vestiacamp" target="_blank" rel="noopener noreferrer" className="text-xl sm:text-2xl md:text-3xl font-normal hover:text-gray-300 transition-colors flex items-center gap-3">
-                                                    <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
-                                                    YouTube
                                                 </a>
                                             </li>
                                         </ul>
 
                                         <div className="flex gap-3 mt-8 sm:mt-12">
-                                            <a href="https://discord.gg/vestiacamp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
+                                            <a href="https://discord.gg/UrXE4Aqtme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
                                                 <DiscordIcon className="w-4 h-4" />
                                             </a>
-                                            <a href="https://instagram.com/vestiacamp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
+                                            <a href="https://www.instagram.com/v.camp_" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
                                                 <Instagram className="w-4 h-4" />
-                                            </a>
-                                            <a href="https://youtube.com/@vestiacamp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
-                                                <Youtube className="w-4 h-4" />
                                             </a>
                                         </div>
                                     </motion.div>
@@ -257,7 +247,7 @@ const Navbar = () => {
                                         </p>
 
                                         <a
-                                            href="https://discord.gg/vestiacamp"
+                                            href="https://discord.gg/UrXE4Aqtme"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="bg-[#5865F2] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium hover:bg-[#4752c4] transition-colors mb-6 sm:mb-10 flex items-center gap-2 text-sm sm:text-base"
@@ -265,9 +255,6 @@ const Navbar = () => {
                                             <DiscordIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                                             Gabung Sekarang
                                         </a>
-
-                                        {/* Flag Stack */}
-                                        
                                     </motion.div>
                                 </div>
                             </motion.div>

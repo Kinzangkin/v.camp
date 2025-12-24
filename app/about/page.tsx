@@ -177,7 +177,7 @@ export default function AboutPage() {
                         Bergabunglah dengan komunitas editor kreatif dari seluruh dunia. Belajar, berkarya, dan tumbuh bersama di V.camp Discord Server.
                     </p>
                     <a
-                        href="https://discord.gg/vestiacamp"
+                        href="https://discord.gg/UrXE4Aqtme"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 bg-white text-[#1A1A1A] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
