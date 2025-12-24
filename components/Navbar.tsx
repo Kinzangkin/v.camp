@@ -196,9 +196,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link href="/join" onClick={toggleMenu} className="text-2xl sm:text-3xl md:text-4xl font-normal hover:text-gray-300 transition-colors">Cara Bergabung</Link>
                                             </li>
-                                            <li>
-                                                <Link href="/contact" onClick={toggleMenu} className="text-2xl sm:text-3xl md:text-4xl font-normal hover:text-gray-300 transition-colors">Kontak</Link>
-                                            </li>
+                                        
                                         </ul>
                                     </motion.div>
                                 </div>
@@ -269,14 +267,7 @@ const Navbar = () => {
                                         </a>
 
                                         {/* Flag Stack */}
-                                        <div className="flex gap-1 sm:gap-2 items-center justify-center text-xl sm:text-2xl">
-                                            <span>🇮🇩</span>
-                                            <span>🇲🇾</span>
-                                            <span>🇵🇭</span>
-                                            <span>🇺🇸</span>
-                                            <span>🇯🇵</span>
-                                            <span className="text-xs sm:text-sm text-gray-400 ml-1 sm:ml-2">+lainnya</span>
-                                        </div>
+                                        
                                     </motion.div>
                                 </div>
                             </motion.div>
