@@ -129,6 +129,8 @@ class Media {
     textColor: string;
     borderRadius: number;
     font: string;
+    itemWidth: number;
+    itemHeight: number;
     program: any;
     plane: any;
     title: any;
@@ -155,7 +157,9 @@ class Media {
         bend,
         textColor,
         borderRadius = 0,
-        font
+        font,
+        itemWidth = 700,
+        itemHeight = 900
     }: {
         geometry: any;
         gl: any;
@@ -171,6 +175,8 @@ class Media {
         textColor: string;
         borderRadius?: number;
         font: string;
+        itemWidth?: number;
+        itemHeight?: number;
     }) {
         this.geometry = geometry;
         this.gl = gl;
@@ -186,6 +192,8 @@ class Media {
         this.textColor = textColor;
         this.borderRadius = borderRadius;
         this.font = font;
+        this.itemWidth = itemWidth;
+        this.itemHeight = itemHeight;
         this.createShader();
         this.createMesh();
         this.createTitle();
@@ -245,7 +253,7 @@ class Media {
             uniforms: {
                 tMap: { value: texture },
                 uPlaneSizes: { value: [0, 0] },
-                uImageSizes: { value: [0, 0] },
+                uImageSizes: { value: [1, 1] },
                 uSpeed: { value: 0 },
                 uTime: { value: 100 * Math.random() },
                 uBorderRadius: { value: this.borderRadius }
@@ -253,7 +261,10 @@ class Media {
             transparent: true
         });
         const img = new Image();
-        img.crossOrigin = 'anonymous';
+        // Only trigger crossOrigin if using external images to avoid CORS issues on local/Vercel with relative paths
+        if (this.image.startsWith('http') || this.image.startsWith('//')) {
+            img.crossOrigin = 'anonymous';
+        }
         img.src = this.image;
         img.onload = () => {
             texture.image = img;
@@ -321,8 +332,8 @@ class Media {
         if (screen) this.screen = screen;
         if (viewport) this.viewport = viewport;
         this.scale = this.screen.height / 1500;
-        this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-        this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+        this.plane.scale.y = (this.viewport.height * (this.itemHeight * this.scale)) / this.screen.height;
+        this.plane.scale.x = (this.viewport.width * (this.itemWidth * this.scale)) / this.screen.width;
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         this.padding = 2;
         this.width = this.plane.scale.x + this.padding;
@@ -364,7 +375,9 @@ class App {
             borderRadius = 0,
             font = 'bold 30px Figtree',
             scrollSpeed = 2,
-            scrollEase = 0.05
+            scrollEase = 0.05,
+            itemWidth = 700,
+            itemHeight = 900
         }: {
             items?: { image: string; text: string }[];
             bend?: number;
@@ -373,6 +386,8 @@ class App {
             font?: string;
             scrollSpeed?: number;
             scrollEase?: number;
+            itemWidth?: number;
+            itemHeight?: number;
         } = {}
     ) {
         document.documentElement.classList.remove('no-js');
@@ -385,7 +400,7 @@ class App {
         this.createScene();
         this.onResize();
         this.createGeometry();
-        this.createMedias(items, bend, textColor, borderRadius, font);
+        this.createMedias(items, bend, textColor, borderRadius, font, itemWidth, itemHeight);
         this.update();
         this.addEventListeners();
     }
@@ -411,7 +426,7 @@ class App {
         this.planeGeometry = new Plane(this.gl, { heightSegments: 50, widthSegments: 100 });
     }
 
-    createMedias(items?: { image: string; text: string }[], bend = 1, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree') {
+    createMedias(items?: { image: string; text: string }[], bend = 1, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', itemWidth = 700, itemHeight = 900) {
         const defaultItems = [
             { image: 'https://picsum.photos/seed/1/800/600?grayscale', text: 'Bridge' },
             { image: 'https://picsum.photos/seed/2/800/600?grayscale', text: 'Desk Setup' },
@@ -434,7 +449,9 @@ class App {
                 bend,
                 textColor,
                 borderRadius,
-                font
+                font,
+                itemWidth,
+                itemHeight
             });
         });
     }
@@ -535,6 +552,8 @@ interface CircularGalleryProps {
     font?: string;
     scrollSpeed?: number;
     scrollEase?: number;
+    itemWidth?: number;
+    itemHeight?: number;
 }
 
 export default function CircularGallery({
@@ -544,17 +563,19 @@ export default function CircularGallery({
     borderRadius = 0.05,
     font = 'bold 30px sans-serif',
     scrollSpeed = 2,
-    scrollEase = 0.05
+    scrollEase = 0.05,
+    itemWidth = 700,
+    itemHeight = 900
 }: CircularGalleryProps) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!containerRef.current) return;
-        const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+        const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, itemWidth, itemHeight });
         return () => {
             app.destroy();
         };
-    }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+    }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, itemWidth, itemHeight]);
 
     return <div className="circular-gallery" ref={containerRef} />;
 }
