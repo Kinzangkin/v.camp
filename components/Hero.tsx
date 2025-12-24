@@ -5,14 +5,14 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { Sparkles } from "lucide-react";
 
-// Gallery items for V.camp MEP showcase
+// Gallery items for V.camp MEP showcase (using optimized WebP images)
 const galleryItems = [
-    { image: "/asset/1.png", text: "1" },
-    { image: "/asset/2.png", text: "2" },
-    { image: "/asset/3.png", text: "3" },
-    { image: "/asset/4.png", text: "4" },
-    { image: "/asset/5.png", text: "5" },
-    { image: "/asset/6.png", text: "6" },
+    { image: "/asset-optimized/1.webp", text: "1" },
+    { image: "/asset-optimized/2.webp", text: "2" },
+    { image: "/asset-optimized/3.webp", text: "3" },
+    { image: "/asset-optimized/4.webp", text: "4" },
+    { image: "/asset-optimized/5.webp", text: "5" },
+    { image: "/asset-optimized/6.webp", text: "6" },
 ];
 
 // Preload images utility
