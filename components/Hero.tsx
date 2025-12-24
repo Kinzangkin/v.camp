@@ -31,7 +31,7 @@ const preloadImages = (images: string[]): Promise<void[]> => {
 
 // Loading skeleton component
 const GallerySkeleton = () => (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
         <div className="flex flex-col items-center gap-4">
             <div className="w-16 h-16 border-4 border-[#5865F2] border-t-transparent rounded-full animate-spin" />
             <p className="text-gray-500 text-sm animate-pulse">Memuat galeri...</p>
