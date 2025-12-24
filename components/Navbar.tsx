@@ -108,10 +108,18 @@ const Navbar = () => {
 
                     <Link
                         href="/"
-                        className={`font-bold text-xl sm:text-2xl tracking-tighter pointer-events-auto z-70 transition-colors ${isScrolled ? 'text-[#1A1A1A]' : 'mix-blend-difference text-white'
-                            }`}
+                        className="font-bold text-xl sm:text-2xl tracking-tighter pointer-events-auto z-70 relative"
                     >
-                        V.camp
+                        <motion.span
+                            key={isOpen ? 'open' : 'closed'}
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.9 }}
+                            className={`relative ${isOpen ? 'text-white' : 'mix-blend-difference'}`}
+                        >
+                            V.camp
+                        </motion.span>
                     </Link>
 
                     {/* Desktop buttons */}
